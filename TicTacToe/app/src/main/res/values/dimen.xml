@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="boxHeight">80dp</dimen>
+    <dimen name="boxWidth">80dp</dimen>
+    <dimen name="boxTextSize">50sp</dimen>
+    <dimen name="controlButtonHeight">50dp</dimen>
+    <dimen name="controlButtonWidth">50dp</dimen>
+    <dimen name="resultTextSize">30sp</dimen>
+</resources>

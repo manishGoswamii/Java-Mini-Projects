@@ -1,0 +1,166 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayoutFirst"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    >
+    <TextView
+        android:id="@+id/TextViewGameName"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="TicTacToe! XD"
+        android:textSize="@dimen/boxTextSize"
+        android:textStyle="bold|italic"
+        android:layout_centerHorizontal="true"
+        />
+    <GridLayout
+        android:id="@+id/GridLayoutFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/TextViewGameName"
+        android:layout_marginTop="20dp"
+    >
+
+
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/ButtonFirst"
+    android:layout_width="@dimen/boxWidth"
+    android:layout_height="@dimen/boxHeight"
+    android:textSize="@dimen/boxTextSize"
+
+    />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonSecond"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_toRightOf="@+id/ButtonFirst"
+
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonThird"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_toRightOf="@+id/ButtonSecond"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonFourth"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_below="@+id/ButtonFirst"
+
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonFifth"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_below="@+id/ButtonSecond"
+        android:layout_toRightOf="@+id/ButtonFourth"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonSixth"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_below="@+id/ButtonSecond"
+        android:layout_toRightOf="@+id/ButtonFifth"
+
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonSeventh"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_below="@+id/ButtonFourth"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonEighth"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_below="@+id/ButtonFourth"
+        android:layout_toRightOf="@+id/ButtonSeventh"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ButtonNinth"
+        android:layout_width="@dimen/boxWidth"
+        android:layout_height="@dimen/boxHeight"
+        android:textSize="@dimen/boxTextSize"
+        android:layout_below="@+id/ButtonFourth"
+        android:layout_toRightOf="@+id/ButtonEighth"
+
+        />
+    </GridLayout>
+    <GridLayout
+        android:id="@+id/GridLayoutSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/GridLayoutFirst"
+        android:layout_marginTop="20dp"
+
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ButtonPlay"
+            android:layout_width="@dimen/boxWidth"
+            android:layout_height="@dimen/boxHeight"
+
+            android:background="@drawable/play" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ButtonRestart"
+            android:layout_width="@dimen/boxWidth"
+            android:layout_height="@dimen/boxHeight"
+
+            android:layout_below="@+id/ButtonPlay"
+            android:background="@drawable/restart"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ButtonClose"
+            android:layout_width="@dimen/boxWidth"
+            android:layout_height="@dimen/boxHeight"
+
+            android:background="@drawable/close"
+            />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/TextViewResult"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/resultTextSize"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/GridLayoutSecond"
+        android:visibility="invisible"
+
+        />
+
+</RelativeLayout>
