@@ -5,5 +5,7 @@
     <dimen name="boxTextSize">50sp</dimen>
     <dimen name="controlButtonHeight">50dp</dimen>
     <dimen name="controlButtonWidth">50dp</dimen>
-    <dimen name="resultTextSize">30sp</dimen>
+    <dimen name="resultTextSize">25sp</dimen>
+    <dimen name="top_padding">25dp</dimen>
+    <dimen name="text_view_text_size">25sp</dimen>
 </resources>

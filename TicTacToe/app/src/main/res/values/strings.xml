@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="win_statement"> %1$s Wins.\nTap on Restart Button.</string>
+    <string name="no_win_statement">No winner.\nTap on Restart Button.</string>
+    <string name="play_string">Tap Play Button.</string>
 
 </resources>

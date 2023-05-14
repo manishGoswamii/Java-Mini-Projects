@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity
     androidx.appcompat.widget.AppCompatButton buttonPlay;
     androidx.appcompat.widget.AppCompatButton buttonRestart;
     androidx.appcompat.widget.AppCompatButton buttonClose;
-    TextView  result;
+    TextView result;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -40,19 +40,13 @@ public class MainActivity extends AppCompatActivity
         buttonClose= findViewById(R.id.ButtonClose);
         result = findViewById(R.id.TextViewResult);
 
-        button1.setEnabled(false);
-        button2.setEnabled(false);
-        button3.setEnabled(false);
-        button4.setEnabled(false);
-        button5.setEnabled(false);
-        button6.setEnabled(false);
-        button7.setEnabled(false);
-        button8.setEnabled(false);
-        button9.setEnabled(false);
-        buttonRestart.setEnabled(false);
+        disableAllButtons();
 
+        buttonRestart.setEnabled(false);
         result.setVisibility(View.VISIBLE);
-        result.setText("Tap Play Button to Start.");
+        result.setText(R.string.play_string);
+
+        //Exit Button
         buttonClose.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -62,6 +56,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //Restart Button
         buttonRestart.setOnClickListener(v->
         {
             button1.setText("");
@@ -73,17 +68,23 @@ public class MainActivity extends AppCompatActivity
             button7.setText("");
             button8.setText("");
             button9.setText("");
-            button1.setEnabled(true);
-            button2.setEnabled(true);
-            button3.setEnabled(true);
-            button4.setEnabled(true);
-            button5.setEnabled(true);
-            button6.setEnabled(true);
-            button7.setEnabled(true);
-            button8.setEnabled(true);
-            button9.setEnabled(true);
             sign = "X";
             result.setVisibility(View.INVISIBLE);
+            enableAllButtons();
+
+            //Added code to make border on buttons
+
+            button1.setBackgroundResource(R.drawable.button_outline_border);
+            button2.setBackgroundResource(R.drawable.button_outline_border);
+            button3.setBackgroundResource(R.drawable.button_outline_border);
+            button4.setBackgroundResource(R.drawable.button_outline_border);
+            button5.setBackgroundResource(R.drawable.button_outline_border);
+            button6.setBackgroundResource(R.drawable.button_outline_border);
+            button7.setBackgroundResource(R.drawable.button_outline_border);
+            button8.setBackgroundResource(R.drawable.button_outline_border);
+            button9.setBackgroundResource(R.drawable.button_outline_border);
+
+
 
         });
 
@@ -98,41 +99,39 @@ public class MainActivity extends AppCompatActivity
 
                 if(check>5)
                 {
-                    if(button2.getText() != null && button3.getText()!=null)
+                    if(checkNotNull(button2) && checkNotNull(button3))
                     {
-                        if(button1.getText().toString().equals(button3.getText().toString()) && button2.getText().toString().equals(button3.getText().toString()) )
+                        if(checkSign(button1,button3) && checkSign(button2,button3))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button4.getText() != null && button7.getText()!=null)
+                    if(checkNotNull(button4) && checkNotNull(button7))
                     {
-                        if(button1.getText().toString().equals(button4.getText().toString()) && button1.getText().toString().equals(button7.getText().toString()) )
+                        if(checkSign(button1,button4) && checkSign(button1,button7) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
                         }
                     }
 
-                    if(button5.getText() != null && button9.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button9))
                     {
-                        if(button1.getText().toString().equals(button5.getText().toString()) && button1.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button1,button5) && checkSign(button1,button9))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
+
                             gameOver();
                             return;
                         }
                     }
+                    
                     checkSlotsFull();
+
                 }
+
 
                 changeSign();
 
@@ -151,25 +150,21 @@ public class MainActivity extends AppCompatActivity
                 button2.setEnabled(false);
                 if(check>5)
                 {
-                    if(button1.getText() != null && button3.getText()!=null)
+                    if(checkNotNull(button1) && checkNotNull(button3))
                     {
-                        if(button1.getText().toString().equals(button3.getText().toString()) && button2.getText().toString().equals(button3.getText().toString()) )
+                        if(checkSign(button1,button3) && checkSign(button2,button3))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button5.getText() != null && button8.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button8))
                     {
-                        if(button2.getText().toString().equals(button5.getText().toString()) && button2.getText().toString().equals(button8.getText().toString()) )
+                        if(checkSign(button2,button5) && checkSign(button2,button8))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
-                            gameOver();
+                           gameOver();
                             return;
 
                         }
@@ -199,36 +194,33 @@ public class MainActivity extends AppCompatActivity
 
                 if(check>5)
                 {
-                    if(button2.getText() != null && button1.getText()!=null)
+                    if(checkNotNull(button2) && checkNotNull(button1))
                     {
-                        if(button1.getText().toString().equals(button3.getText().toString()) && button2.getText().toString().equals(button3.getText().toString()) )
+                        if(checkSign(button1,button3) && checkSign(button2,button3))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
+
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button6.getText() != null && button9.getText()!=null)
+                    if(checkNotNull(button6) && checkNotNull(button9))
                     {
-                        if(button3.getText().toString().equals(button6.getText().toString()) && button3.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button6,button3) && checkSign(button3,button9) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
+
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button5.getText() != null && button7.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button7))
                     {
-                        if(button3.getText().toString().equals(button5.getText().toString()) && button5.getText().toString().equals(button7.getText().toString()) )
+                        if(checkSign(button5,button3) && checkSign(button5,button7))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
+
                             gameOver();
                             return;
 
@@ -254,24 +246,20 @@ public class MainActivity extends AppCompatActivity
                 button4.setEnabled(false);
                 if(check>5)
                 {
-                    if(button1.getText() != null && button7.getText()!=null)
+                    if(checkNotNull(button1) && checkNotNull(button7))
                     {
-                        if(button1.getText().toString().equals(button4.getText().toString()) && button4.getText().toString().equals(button7.getText().toString()) )
+                        if(checkSign(button1,button4) && checkSign(button4,button7))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button5.getText() != null && button6.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button6))
                     {
-                        if(button5.getText().toString().equals(button4.getText().toString()) && button4.getText().toString().equals(button6.getText().toString()) )
+                        if(checkSign(button4,button5) && checkSign(button4,button6))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
@@ -301,48 +289,40 @@ public class MainActivity extends AppCompatActivity
 
                 if(check>5)
                 {
-                    if(button2.getText() != null && button8.getText()!=null)
+                    if(checkNotNull(button2) && checkNotNull(button8))
                     {
-                        if(button2.getText().toString().equals(button5.getText().toString()) && button2.getText().toString().equals(button8.getText().toString()) )
+                        if(checkSign(button2,button5) && checkSign(button2,button8) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button4.getText() != null && button6.getText()!=null)
+                    if(checkNotNull(button4) && checkNotNull(button6))
                     {
-                        if(button4.getText().toString().equals(button6.getText().toString()) && button4.getText().toString().equals(button5.getText().toString()) )
+                        if(checkSign(button4,button6) && checkSign(button4,button5))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
 
-                    if(button1.getText() != null && button9.getText()!=null)
+                    if(checkNotNull(button1) && checkNotNull(button9))
                     {
-                        if(button1.getText().toString().equals(button5.getText().toString()) && button1.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button1,button5) && checkSign(button1,button9))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
-                    if(button3.getText() != null && button7.getText()!=null)
+                    if(checkNotNull(button3) && checkNotNull(button7))
                     {
-                        if(button3.getText().toString().equals(button5.getText().toString()) && button3.getText().toString().equals(button7.getText().toString()) )
+                        if(checkSign(button3,button5) && checkSign(button3,button7) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
-                            gameOver();
+                           gameOver();
                             return;
 
                         }
@@ -367,24 +347,20 @@ public class MainActivity extends AppCompatActivity
                 button6.setEnabled(false);
                 if(check>5)
                 {
-                    if(button3.getText() != null && button9.getText()!=null)
+                    if(checkNotNull(button3) && checkNotNull(button9))
                     {
-                        if(button6.getText().toString().equals(button9.getText().toString()) && button6.getText().toString().equals(button3.getText().toString()) )
+                        if(checkSign(button9,button6) && checkSign(button6,button3))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
-                    if(button4.getText() != null && button5.getText()!=null)
+                    if(checkNotNull(button4) && checkNotNull(button5))
                     {
-                        if(button6.getText().toString().equals(button5.getText().toString()) && button6.getText().toString().equals(button4.getText().toString()) )
+                        if(checkSign(button6,button5) && checkSign(button6,button4))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
-                            gameOver();
+                           gameOver();
                             return;
 
                         }
@@ -410,34 +386,28 @@ public class MainActivity extends AppCompatActivity
                 button7.setEnabled(false);
                 if(check>5)
                 {
-                    if(button1.getText() != null && button4.getText()!=null)
+                    if(checkNotNull(button1) && checkNotNull(button4))
                     {
-                        if(button1.getText().toString().equals(button4.getText().toString()) && button7.getText().toString().equals(button1.getText().toString()) )
+                        if(checkSign(button1,button4) && checkSign(button7,button1) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
+                           gameOver();
+                            return;
+
+                        }
+                    }
+                    if(checkNotNull(button8) && checkNotNull(button9))
+                    {
+                        if(checkSign(button8,button9) && checkSign(button7,button9))
+                        {
                             gameOver();
                             return;
 
                         }
                     }
-                    if(button8.getText() != null && button9.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button3))
                     {
-                        if(button8.getText().toString().equals(button9.getText().toString()) && button7.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button5,button3) && checkSign(button7,button3))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
-                            gameOver();
-                            return;
-
-                        }
-                    }
-                    if(button5.getText() != null && button3.getText()!=null)
-                    {
-                        if(button3.getText().toString().equals(button5.getText().toString()) && button3.getText().toString().equals(button7.getText().toString()) )
-                        {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
@@ -466,23 +436,19 @@ public class MainActivity extends AppCompatActivity
                 button8.setEnabled(false);
                 if(check>5)
                 {
-                    if(button7.getText() != null && button9.getText()!=null)
+                    if(checkNotNull(button7) && checkNotNull(button9))
                     {
-                        if(button7.getText().toString().equals(button8.getText().toString()) && button8.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button7,button8) && checkSign(button8,button9) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
-                    if(button2.getText() != null && button5.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button2))
                     {
-                        if(button5.getText().toString().equals(button2.getText().toString()) && button2.getText().toString().equals(button8.getText().toString()) )
+                        if(checkSign(button8,button2) && checkSign(button2,button5))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
@@ -509,34 +475,28 @@ public class MainActivity extends AppCompatActivity
                 button9.setEnabled(false);
                 if(check>5)
                 {
-                    if(button3.getText() != null && button6.getText()!=null)
+                    if(checkNotNull(button3) && checkNotNull(button6))
                     {
-                        if(button6.getText().toString().equals(button3.getText().toString()) && button6.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button9,button6) && checkSign(button6,button3))
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
-                    if(button7.getText() != null && button8.getText()!=null)
+                    if(checkNotNull(button7) && checkNotNull(button8))
                     {
-                        if(button7.getText().toString().equals(button8.getText().toString()) && button8.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button7,button8) && checkSign(button8,button9) )
                         {
-                            result.setText(sign + " Wins. Game Over. Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
                         }
                     }
-                    if(button1.getText() != null && button5.getText()!=null)
+                    if(checkNotNull(button5) && checkNotNull(button1))
                     {
-                        if(button1.getText().toString().equals(button5.getText().toString()) && button5.getText().toString().equals(button9.getText().toString()) )
+                        if(checkSign(button1,button5) && checkSign(button5,button9))
                         {
-                            result.setText(sign + " Wins. Game Over.Tap on Restart.");
-                            result.setVisibility(View.VISIBLE);
                             gameOver();
                             return;
 
@@ -560,41 +520,55 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
 
-                button1.setEnabled(true);
-//                button1.setBackgroundColor(getColor(R.color.boxColor));
-
-                button2.setEnabled(true);
-//                button2.setBackgroundColor(getColor(R.color.boxColor);
-
-                button3.setEnabled(true);
-//                button3.setBackgroundColor(getColor(R.color.boxColor));
-
-                button4.setEnabled(true);
-//                button4.setBackgroundColor(getColor(R.color.boxColor));
-
-                button5.setEnabled(true);
-//                button5.setBackgroundColor(getColor(R.color.boxColor));
-
-                button6.setEnabled(true);
-//                button6.setBackgroundColor(getColor(R.color.boxColor));
-
-                button7.setEnabled(true);
-//                button7.setBackgroundColor(getColor(R.color.boxColor));
-
-                button8.setEnabled(true);
-//                button8.setBackgroundColor(getColor(R.color.boxColor));
-
-                button9.setEnabled(true);
-//                button9.setBackgroundColor(getColor(R.color.boxColor));
-
+                enableAllButtons();
                 result.setVisibility(View.INVISIBLE);
                 buttonRestart.setEnabled(true);
                 buttonPlay.setEnabled(false);
 
-                return;
+                //Added code for border in the buttons
+
+                button1.setBackgroundResource(R.drawable.button_outline_border);
+                button2.setBackgroundResource(R.drawable.button_outline_border);
+                button3.setBackgroundResource(R.drawable.button_outline_border);
+                button4.setBackgroundResource(R.drawable.button_outline_border);
+                button5.setBackgroundResource(R.drawable.button_outline_border);
+                button6.setBackgroundResource(R.drawable.button_outline_border);
+                button7.setBackgroundResource(R.drawable.button_outline_border);
+                button8.setBackgroundResource(R.drawable.button_outline_border);
+                button9.setBackgroundResource(R.drawable.button_outline_border);
+
+
             }
         });
     }
+
+    public void enableAllButtons()
+    {
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
+        button5.setEnabled(true);
+        button6.setEnabled(true);
+        button7.setEnabled(true);
+        button8.setEnabled(true);
+        button9.setEnabled(true);
+
+    }
+
+    public void disableAllButtons()
+    {
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        button4.setEnabled(false);
+        button5.setEnabled(false);
+        button6.setEnabled(false);
+        button7.setEnabled(false);
+        button8.setEnabled(false);
+        button9.setEnabled(false);
+    }
+
 
     public void changeSign()
     {
@@ -611,101 +585,74 @@ public class MainActivity extends AppCompatActivity
 
     public void gameOver()
     {
-        button1.setEnabled(false);
-        button2.setEnabled(false);
-        button3.setEnabled(false);
-        button4.setEnabled(false);
-        button5.setEnabled(false);
-        button6.setEnabled(false);
-        button7.setEnabled(false);
-        button8.setEnabled(false);
-        button9.setEnabled(false);
+        result.setText(getString(R.string.win_statement,sign));
+        result.setVisibility(View.VISIBLE);
 
+       disableAllButtons();
 
-        if(button1.getText().toString().equals("X") ||  button1.getText().toString().equals("O"))
-        {
-                //Left Intentionally
-        }
-        else
-        {
-            button1.setText("*");
-        }
-        if(button2.getText().toString().equals("X") || button2.getText().toString().equals("O"))
-        {
+       if(button1.getText().toString().equals(""))
+       {
+           button1.setText("*");
+       }
 
-        }
-        else
+        if(button2.getText().toString().equals(""))
         {
             button2.setText("*");
         }
-        if(button3.getText().toString().equals("X") || button3.getText().toString().equals("O"))
-        {
-
-        }
-        else
+        if(button3.getText().toString().equals(""))
         {
             button3.setText("*");
         }
-    if(button4.getText().toString().equals("X") || button4.getText().toString().equals("O"))
-    {
+        if(button4.getText().toString().equals(""))
+        {
+            button4.setText("*");
+        }
+        if(button5.getText().toString().equals(""))
+        {
+            button5.setText("*");
+        }
+        if(button6.getText().toString().equals(""))
+        {
+            button6.setText("*");
+        }
+        if(button7.getText().toString().equals(""))
+        {
+            button7.setText("*");
+        }
+        if(button8.getText().toString().equals(""))
+        {
+            button8.setText("*");
+        }
+        if(button9.getText().toString().equals(""))
+        {
+            button9.setText("*");
+        }
 
     }
-    else
-    {
-        button4.setText("*");
-    }
-    if(button5.getText().toString().equals("X") || button5.getText().toString().equals("O"))
-    {
-
-    }
-    else
-    {
-        button5.setText("*");
-    }
-    if(button6.getText().toString().equals("X") || button6.getText().toString().equals("O"))
-    {
-
-    }
-    else
-    {
-        button6.setText("*");
-    }
-    if(button7.getText().toString().equals("X") || button7.getText().toString().equals("O"))
-    {
-
-    }
-    else
-    {
-        button7.setText("*");
-    }
-    if(button8.getText().toString().equals("X") || button8.getText().toString().equals("O"))
-    {
-
-    }
-    else
-    {
-        button8.setText("*");
-    }
-    if(button9.getText().toString().equals("X") || button9.getText().toString().equals("O"))
-    {
-
-    }
-    else
-    {
-        button9.setText("*");
-    }
-
-        return;
-    }
-
     public void checkSlotsFull()
     {
         if(button1.getText().toString().length() !=0 && button2.getText().toString().length() !=0 && button3.getText().toString().length() !=0  && button4.getText().toString().length() != 0 && button5.getText().toString().length() != 0 && button6.getText().toString().length() != 0  && button7.getText().toString().length() != 0  && button8.getText().toString().length() != 0  && button9.getText().toString().length() != 0 )
         {
             result.setVisibility(View.VISIBLE);
-            result.setText("No winner. Tap on Restart Button.");
+            result.setText(R.string.no_win_statement);
         }
-        return;
+
+    }
+    public boolean checkNotNull(androidx.appcompat.widget.AppCompatButton btnCheckNull)
+    {
+        if(btnCheckNull.getText()!=null)
+        {
+            return true;
+        }
+        return false;
     }
 
+    public boolean checkSign(androidx.appcompat.widget.AppCompatButton checkBtn1, androidx.appcompat.widget.AppCompatButton checkBtn2)
+    {
+        if(checkBtn1.getText().toString().equals(checkBtn2.getText().toString()))
+        {
+            return  true;
+        }
+        return false;
+    }
 }
