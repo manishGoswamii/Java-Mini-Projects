@@ -587,64 +587,88 @@ public class MainActivity extends AppCompatActivity
     {
         result.setText(getString(R.string.win_statement,sign));
         result.setVisibility(View.VISIBLE);
+        checkEnabled(button1);
+        checkEnabled(button2);
+        checkEnabled(button3);
+        checkEnabled(button4);
+        checkEnabled(button5);
+        checkEnabled(button6);
+        checkEnabled(button7);
+        checkEnabled(button8);
+        checkEnabled(button9);
 
-       disableAllButtons();
+        disableAllButtons();
 
-       if(button1.getText().toString().equals(""))
-       {
-           button1.setText("*");
-       }
 
-        if(button2.getText().toString().equals(""))
-        {
-            button2.setText("*");
-        }
-        if(button3.getText().toString().equals(""))
-        {
-            button3.setText("*");
-        }
-        if(button4.getText().toString().equals(""))
-        {
-            button4.setText("*");
-        }
-        if(button5.getText().toString().equals(""))
-        {
-            button5.setText("*");
-        }
-        if(button6.getText().toString().equals(""))
-        {
-            button6.setText("*");
-        }
-        if(button7.getText().toString().equals(""))
-        {
-            button7.setText("*");
-        }
-        if(button8.getText().toString().equals(""))
-        {
-            button8.setText("*");
-        }
-        if(button9.getText().toString().equals(""))
-        {
-            button9.setText("*");
-        }
 
+
+
+
+    }
+
+    public void checkEnabled(androidx.appcompat.widget.AppCompatButton button)
+    {
+        if(button.isEnabled()==true)
+        {
+            button.setText("*");
+        }
     }
     public void checkSlotsFull()
     {
-        if(button1.getText().toString().length() !=0 && button2.getText().toString().length() !=0 && button3.getText().toString().length() !=0  && button4.getText().toString().length() != 0 && button5.getText().toString().length() != 0 && button6.getText().toString().length() != 0  && button7.getText().toString().length() != 0  && button8.getText().toString().length() != 0  && button9.getText().toString().length() != 0 )
+
+        int count=0;
+//        androidx.appcompat.widget.AppCompatButton notClickedButton;
+        if(!button1.isEnabled())
+        {
+            count++;
+        }
+        if(!button2.isEnabled())
+        {
+            count++;
+        }
+        if(!button3.isEnabled())
+        {
+            count++;
+        }
+        if(!button4.isEnabled())
+        {
+            count++;
+        }
+        if(!button5.isEnabled())
+        {
+            count++;
+        }
+        if(!button6.isEnabled())
+        {
+            count++;
+        }
+        if(!button7.isEnabled())
+        {
+            count++;
+        }
+        if(!button8.isEnabled())
+        {
+            count++;
+        }
+        if(!button9.isEnabled())
+        {
+            count++;
+        }
+        if(count==9)
         {
             result.setVisibility(View.VISIBLE);
             result.setText(R.string.no_win_statement);
         }
 
+
     }
     public boolean checkNotNull(androidx.appcompat.widget.AppCompatButton btnCheckNull)
     {
-        if(btnCheckNull.getText()!=null)
+        if(btnCheckNull.getText()==null)
         {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public boolean checkSign(androidx.appcompat.widget.AppCompatButton checkBtn1, androidx.appcompat.widget.AppCompatButton checkBtn2)

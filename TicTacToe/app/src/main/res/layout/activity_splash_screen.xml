@@ -27,8 +27,8 @@
 />
 <com.airbnb.lottie.LottieAnimationView
     android:id="@+id/LAFirst"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
     app:lottie_rawRes="@raw/loading_tic"
     app:lottie_autoPlay="true"
     app:lottie_loop="true"
